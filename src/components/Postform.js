@@ -1,10 +1,11 @@
 import React, { Component } from "react";
 
 export default class Postform extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {};
-  }
+  state = {
+    title: "",
+    body: "",
+  };
+
   render() {
     return (
       <div>

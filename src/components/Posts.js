@@ -1,12 +1,10 @@
 import React, { Component } from "react";
 
 export default class Posts extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      posts: [],
-    };
-  }
+  state = {
+    posts: [],
+  };
+
   async componentDidMount() {
     const data = await (
       await fetch("https://jsonplaceholder.typicode.com/posts")
