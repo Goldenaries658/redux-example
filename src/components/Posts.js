@@ -6,11 +6,13 @@ export default class Posts extends Component {
   };
 
   async componentDidMount() {
+    // Fetching placeholder data from dummy API
     const data = await (
       await fetch('https://jsonplaceholder.typicode.com/posts')
     ).json();
     this.setState({ posts: data });
   }
+
   render() {
     const postItems = this.state.posts.map((post) => (
       <div key={post.id}>
@@ -19,6 +21,7 @@ export default class Posts extends Component {
         <hr />
       </div>
     ));
+
     return (
       <div>
         <h2>Posts</h2>
