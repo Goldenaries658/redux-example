@@ -23,6 +23,9 @@
       "last 1 safari version"
     ]
   },
+  "prettier": {
+    "singleQuote": true
+  },
   "husky": {
     "hooks": {
       "pre-commit": "pretty-quick --staged"
