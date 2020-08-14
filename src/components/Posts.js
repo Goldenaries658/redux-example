@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 
 export default class Posts extends Component {
   state = {
@@ -7,7 +7,7 @@ export default class Posts extends Component {
 
   async componentDidMount() {
     const data = await (
-      await fetch("https://jsonplaceholder.typicode.com/posts")
+      await fetch('https://jsonplaceholder.typicode.com/posts')
     ).json();
     this.setState({ posts: data });
   }

@@ -1,9 +1,9 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 
 export default class Postform extends Component {
   state = {
-    title: "",
-    body: "",
+    title: '',
+    body: '',
   };
 
   onChange = (e) => {
