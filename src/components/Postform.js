@@ -11,12 +11,33 @@ export default class Postform extends Component {
     this.setState({ [name]: value });
   };
 
+  onSubmit = async (e) => {
+    e.preventDefault();
+    const { title, body } = this.state;
+
+    const post = {
+      title,
+      body,
+    };
+
+    // Posting to a dummy API
+    const data = await (
+      await fetch('https://jsonplaceholder.typicode.com/posts', {
+        method: 'POST',
+        headers: {
+          'content-type': 'application/json',
+        },
+        body: JSON.stringify(post),
+      })
+    ).json();
+    console.log(data);
+  };
   render() {
     const { title, body } = this.state;
     return (
       <div>
         <h2>Add post</h2>
-        <form>
+        <form onSubmit={this.onSubmit}>
           <div>
             <label>Title:</label>
             <br />
