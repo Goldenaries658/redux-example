@@ -1,20 +1,14 @@
 import React, { Component } from 'react';
-
-export default class Posts extends Component {
-  state = {
-    posts: [],
-  };
-
-  async componentDidMount() {
-    // Fetching placeholder data from dummy API
-    const data = await (
-      await fetch('https://jsonplaceholder.typicode.com/posts')
-    ).json();
-    this.setState({ posts: data });
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { fetchPosts } from '../actions/postActions';
+class Posts extends Component {
+  componentDidMount() {
+    this.props.fetchPosts();
   }
 
   render() {
-    const postItems = this.state.posts.map((post) => (
+    const postItems = this.props.posts.map((post) => (
       <div key={post.id}>
         <h3>{post.title}</h3>
         <p>{post.body}</p>
@@ -31,3 +25,14 @@ export default class Posts extends Component {
     );
   }
 }
+
+Posts.propTypes = {
+  fetchPosts: PropTypes.func.isRequired,
+  posts: PropTypes.array.isRequired,
+};
+
+const mapStateToProps = (state) => ({
+  posts: state.posts.items,
+});
+
+export default connect(mapStateToProps, { fetchPosts })(Posts);
